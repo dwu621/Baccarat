@@ -233,8 +233,10 @@ const bankerDrawThirdCard = () => {
     if (playerHand[2]) {
         if (bankerTotal <= 2) {
             bankerDrawThird()
-        } else if (bankerTotal === 3 && playerHand[2] !== "8") {
+        } else if (bankerTotal === 3) {
+            if (playerHand[2] !== "8") {
             bankerDrawThird()
+            } else checkWinner()
         } else if (bankerTotal === 4) {
             if (playerHand[2] === "2" || playerHand[2] === "3" || playerHand[2] === "4" || playerHand[2] === "5" || playerHand[2] === "6" || playerHand[2] === "7") {
                 bankerDrawThird()
