@@ -119,7 +119,7 @@ const handTotal = () => {
     }
 
     playerTotal = playerTotal % 10;
-    console.log(playerTotal)
+    console.log(`player total iss ${playerTotal}`)
     
     for (let i = 0; i < bankerHand.length; i++) {
         if (bankerHand[i] === "KING" || bankerHand[i] === "QUEEN" || bankerHand[i] === "JACK") {
@@ -129,7 +129,7 @@ const handTotal = () => {
         } else {bankerTotal += parseInt(bankerHand[i])}
     }
     bankerTotal = bankerTotal % 10;
-    console.log(bankerTotal)
+    console.log(`banker total is ${bankerTotal}`)
     checkNatural();
 }
 
@@ -167,7 +167,7 @@ const playerThirdCardTotal = () => {
         } else {playerTotal += parseInt(playerHand[i])}
     }
     playerTotal = playerTotal % 10;
-    console.log(playerTotal)
+    console.log(`player second total is ${playerTotal}`)
 
 }
 
@@ -181,7 +181,7 @@ const bankerThirdCardTotal = () => {
      } else {bankerTotal += parseInt(bankerHand[i])}
     }
     bankerTotal = bankerTotal % 10;
-    console.log(bankerTotal)
+    console.log(`banker second total is ${bankerTotal}`)
     
 }  
 
@@ -225,13 +225,30 @@ const playerDrawThirdCard = () => {
 
 const bankerDrawThirdCard = () => {
     console.log(`player has ${playerHand.length} cards `)
-    console.log(`banker total iis ${bankerTotal}`)
+    console.log(`banker second total iis ${bankerTotal}`)
+    console.log(playerHand)
     if (!playerHand[2] && bankerTotal <= 5) {
         bankerDrawThird()
     }
     if (playerHand[2]) {
         if (bankerTotal <= 2) {
             bankerDrawThird()
+        } else if (bankerTotal === 3 && playerHand[2] !== "8") {
+            bankerDrawThird()
+        } else if (bankerTotal === 4) {
+            if (playerHand[2] === "2" || playerHand[2] === "3" || playerHand[2] === "4" || playerHand[2] === "5" || playerHand[2] === "6" || playerHand[2] === "7") {
+                bankerDrawThird()
+            } else checkWinner()
+        } else if (bankerTotal === 5) {
+            if (playerHand[2] === "4" || playerHand[2] === "5" || playerHand[2] === "6" || playerHand[2] === "7") {
+                bankerDrawThird()
+            } else checkWinner()
+        } else if (bankerTotal === 6) {
+            if (playerHand[2] === "6" || playerHand[2] === "7") {
+                bankerDrawThird()
+            } else checkWinner()
+        } else if (bankerTotal === 7) {
+            checkWinner()
         }
     }
 }
