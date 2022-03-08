@@ -112,27 +112,36 @@ const handTotal = () => {
     for (let i = 0; i < playerHand.length; i++) {
         if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
             playerTotal += 10;
+        } else if (playerHand[i] === "ACE") {
+            playerTotal++
         } else {playerTotal += parseInt(playerHand[i])}
     }
+
     playerTotal = playerTotal % 10;
     console.log(playerTotal)
     
     for (let i = 0; i < bankerHand.length; i++) {
         if (bankerHand[i] === "KING" || bankerHand[i] === "QUEEN" || bankerHand[i] === "JACK") {
             bankerTotal += 10;
+        } else if (bankerHand[i] === "ACE") {
+            bankerTotal++
         } else {bankerTotal += parseInt(bankerHand[i])}
     }
     bankerTotal = bankerTotal % 10;
     console.log(bankerTotal)
 }
 
+
+
+
+
+
+
+
+
 const dealHand = () => {
     clearTable();
-    
-    
 }
-
-
 
 
 shuffleBtn.addEventListener("click", newShoe)
