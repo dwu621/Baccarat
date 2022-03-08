@@ -30,9 +30,9 @@ let bankerWins = false;
 let tieWins = false;
 
 /// Betting Area
-let tieBetInput = document.querySelector("#tie-bet");
-let playerBetInput = document.querySelector("#player-bet");
-let bankerBetInput = document.querySelector("#banker-bet");
+let tieBetInput = document.querySelector(".tie-bet");
+let playerBetInput = document.querySelector(".player-bet");
+let bankerBetInput = document.querySelector(".banker-bet");
 let totalChipDisplay = document.querySelector("#chip-total");
 
 let totalChip = 1000;
@@ -82,31 +82,55 @@ const drawFourCards = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=4`
     )
-    // console.log(response)
     const fourCards = response.data.cards
-    // console.log(fourCards)
-    playerCard1.style.background = `url("${fourCards[0].image}")`
-    playerHand.push(fourCards[0].value)
-    playerTotalCards++
+    if (response.data.success === false || response.data.remaining < 3) {
+        dealHandBtn.disabled = true;
+        alert("Shuffle Cards")
 
-    bankerCard1.style.background = `url("${fourCards[1].image}")`
-    bankerHand.push(fourCards[1].value)
-    bankerTotalCards++
+    } else {
+        console.log(fourCards)
+        playerCard1.style.background = `url("${fourCards[0].image}")`
+        playerHand.push(fourCards[0].value)
+        playerTotalCards++
+        bankerCard1.style.background = `url("${fourCards[1].image}")`
+        bankerHand.push(fourCards[1].value)
+        bankerTotalCards++
+        playerCard2.style.background = `url("${fourCards[2].image}")`
+        playerHand.push(fourCards[2].value)
+        playerTotalCards++
 
-    playerCard2.style.background = `url("${fourCards[2].image}")`
-    playerHand.push(fourCards[2].value)
-    playerTotalCards++
+        bankerCard2.style.background = `url("${fourCards[3].image}")`
+        bankerHand.push(fourCards[3].value)
+        bankerTotalCards++
+
+        console.log(`playerhand ${playerHand}`)
+        // console.log(playerTotalCards)
+        console.log(`bankerhand ${bankerHand}`)
+        // console.log(bankerTotalCards)
+        handTotal();
+    }
     
-    bankerCard2.style.background = `url("${fourCards[3].image}")`
-    bankerHand.push(fourCards[3].value)
-    bankerTotalCards++
+    
+    
+    
     
 
-    console.log(`playerhand ${playerHand}`)
-    // console.log(playerTotalCards)
-    console.log(`bankerhand ${bankerHand}`)
-    // console.log(bankerTotalCards)
-    handTotal();
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
     
 }
 //
@@ -280,47 +304,41 @@ const updateScoreBoard = () => {
         tieWinDisplay.innerText = tieWinTotal;
         playerMessage.innerText = `Player and Banker both have ${playerTotal}. It's a tie!`
     } 
+    payOut();
+}
+
+const payOut = () => {
+    tieBet = parseInt(tieBetInput.value)
+    playerBet = parseInt(playerBetInput.value)
+    bankerBet = parseInt(bankerBetInput.value)
+    let commission = (bankerBet * 0.05)
+    console.log(tieBet)
+    console.log(playerBet)
+    console.log(bankerBet)
+    if (playerWins === true) {
+        totalChip += playerBet;
+        totalChip -= tieBet;
+        totalChip -= bankerBet;
+    } else if (bankerWins === true) {
+        
+        totalChip += (bankerBet - commission)
+        totalChip -= tieBet;
+        totalChip -= playerBet;
+    } else if (tieWins === true) {
+        totalChip += (tieBet * 8);
+    }
+    totalChipDisplay.innerText = `Total Chips: ${totalChip}`;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const dealHand = () => {
+
     clearTable();
 }
 
 
-shuffleBtn.addEventListener("click", newShoe)
-dealHandBtn.addEventListener("click", dealHand)
+shuffleBtn.addEventListener("click", newShoe);
+dealHandBtn.addEventListener("click", dealHand);
 
 
 
