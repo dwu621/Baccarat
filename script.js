@@ -74,10 +74,10 @@ const clearTable = () => {
     tieWins = false;
     playerMessage.innerText = "Player";
     bankerMessage.innerText = "Banker";
-    drawFourCard();
+    drawFourCards();
 }
 
-const drawFourCard = async () => {
+const drawFourCards = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=4`
     )
@@ -150,7 +150,35 @@ const checkWinner = () => {
         tieWins = true;
     }
 }
+const playerDrawThird = async () => {
+    const response = await axios.get(
+        `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=1`
+    )
+    console.log(response)
+    playerCard3.style.background = `url("${response.data.cards[0].image}")`
+    playerHand.push(response.data.cards[0].value)
+    playerTotalCards++
+    console.log(playerHand)
+    console.log(playerTotalCards)
+}
 
+const bankerDrawThird = async () => {
+    const response = await axios.get(
+        `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=1`
+    )
+    console.log(response)
+    bankerCard3.style.background = `url("${response.data.cards[0].image}")`
+    bankerHand.push(response.data.cards[0].value)
+    bankerTotalCards++
+    console.log(bankerHand)
+    console.log(bankerTotalCards)
+}
+
+
+// const drawThirdCard = () => {
+    // 
+// }
+// 
 
 
 
