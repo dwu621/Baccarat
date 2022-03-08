@@ -211,6 +211,7 @@ const bankerDrawThird = async () => {
     bankerTotalCards++
     console.log(`bankhand${bankerHand}`)
     bankerThirdCardTotal()
+    checkWinner()
 }
 
 
@@ -223,7 +224,16 @@ const playerDrawThirdCard = () => {
 }
 
 const bankerDrawThirdCard = () => {
-
+    console.log(`player has ${playerHand.length} cards `)
+    console.log(`banker total iis ${bankerTotal}`)
+    if (!playerHand[2] && bankerTotal <= 5) {
+        bankerDrawThird()
+    }
+    if (playerHand[2]) {
+        if (bankerTotal <= 2) {
+            bankerDrawThird()
+        }
+    }
 }
 
 
