@@ -46,6 +46,9 @@ let shuffleBtn = document.querySelector("#shuffle-cards");
 let dealHandBtn = document.querySelector("#deal-hand")
 
 const newShoe = async () => {
+    playerWinsDisplay.innerText = 0;
+    tieWinDisplay.innerText = 0;
+    bankerWinsDisplay.innerText = 0;
     dealHandBtn.disabled = false; 
     const response = await axios.get(
         `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6`
