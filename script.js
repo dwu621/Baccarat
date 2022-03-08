@@ -54,7 +54,7 @@ const newShoe = async () => {
     bankerWinTotal = 0;
     dealHandBtn.disabled = false; 
     const response = await axios.get(
-        `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6`
+        `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=8`
     )
     shoeId = response.data.deck_id
     // console.log(shoeId)
