@@ -3,7 +3,7 @@ let bankerWinTotal = 0;
 let tieWinTotal = 0;
 let playerWinTotal = 0;
 let bankerWinsDisplay = document.querySelector("#banker-total-win");
-let tieWinsDisplay = document.querySelector("#tie-total-win");
+let tieWinDisplay = document.querySelector("#tie-total-win");
 let playerWinsDisplay = document.querySelector("#player-total-win");
 
 /// Game Table 
@@ -77,6 +77,7 @@ const clearTable = () => {
     drawFourCards();
 }
 
+
 const drawFourCards = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=4`
@@ -108,7 +109,7 @@ const drawFourCards = async () => {
     handTotal();
     
 }
-
+//
 const handTotal = () => {
     for (let i = 0; i < playerHand.length; i++) {
         if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
@@ -141,6 +142,7 @@ const checkNatural = () => {
         // console.log("draw third")
         playerDrawThirdCard()
     }
+    // updateScoreBoard()
 }
 
 const checkWinner = () => {
@@ -154,6 +156,7 @@ const checkWinner = () => {
         tieWins = true;
         console.log("its a tie")
     }
+    updateScoreBoard()
 }
 
 const playerThirdCardTotal = () => {
@@ -227,8 +230,12 @@ const bankerDrawThirdCard = () => {
     console.log(`player has ${playerHand.length} cards `)
     console.log(`banker second total iis ${bankerTotal}`)
     console.log(playerHand)
-    if (!playerHand[2] && bankerTotal <= 5) {
-        bankerDrawThird()
+    if (!playerHand[2]) {
+        if (bankerTotal <= 5) {
+            bankerDrawThird()
+        } else {
+            checkWinner()
+        }
     }
     if (playerHand[2]) {
         if (bankerTotal <= 2) {
@@ -253,8 +260,26 @@ const bankerDrawThirdCard = () => {
             checkWinner()
         }
     }
+    // updateScoreBoard()
 }
 
+const updateScoreBoard = () => {
+    if (playerWins === true) {
+        playerWinTotal++;
+        playerWinsDisplay.innerText = playerWinTotal;
+        playerMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
+        
+    } else if (bankerWins === true) {
+        bankerWinTotal++;
+        bankerWinsDisplay.innerText = bankerWinTotal;
+        bankerMessage.innerText = `Banker wins with ${bankerTotal} over ${playerTotal}!`;
+        
+    } else if (tieWins === true) {
+        tieWinTotal++;
+        tieWinDisplay.innerText = tieWinTotal;
+        playerMessage.innerText = `Player and Banker both have ${playerTotal}. It's a tie!`
+    } 
+}
 
 
 
