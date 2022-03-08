@@ -33,9 +33,9 @@
             <h1 class="player-head">PLAYER</h2>
             
             <div id="player-card-row">
-                <div id="player-card-1" class="card" data-index="0">card1</div>
-                <div id="player-card-2" class="card" data-index="1">card2</div>
-                <div id="player-card-3" class="card" data-index="2">card3</div>
+                <div id="player-card-1" class="card" data-index="0"></div>
+                <div id="player-card-2" class="card" data-index="1"></div>
+                <div id="player-card-3" class="card" data-index="2"></div>
             </div>
             
         </section>
@@ -43,9 +43,9 @@
         <section id="banker-cards" >
             <h1 class="banker-head">BANKER</h2>
             <div id="banker-card-row">
-                <div id="banker-card-1" class="card" data-index="0">card1</div>
-                <div id="banker-card-2" class="card" data-index="1">card2</div>
-                <div id="banker-card-3" class="card" data-index="2">card3</div>
+                <div id="banker-card-1" class="card" data-index="0"></div>
+                <div id="banker-card-2" class="card" data-index="1"></div>
+                <div id="banker-card-3" class="card" data-index="2"></div>
             </div>
            
         </section>
@@ -53,17 +53,17 @@
         <section id="betting-area">
             <div class="tie-bet-area">
                 <h2 class="tie-head">Tie</h1>
-                <input class="tie-bet" type="number" value="0">
+                <input class="tie-bet" type="number" min="25" step="5" value="0">
             </div>
             
             <div class="banker-bet-area">
                 <h1 class="banker-bet-area">BANKER</h1>
-                <input class="banker-bet" type="number" value="0">
+                <input class="banker-bet" type="number" min="25" step="5" value="0">
             </div>
             
             <div class="banker-bet-area">
                 <h1 class="player-bet-area">PLAYER</h1>
-                <input class="player-bet" type="number" value="0">
+                <input class="player-bet" type="number" min="25" step="5" value="0">
             </div>
             
             <div class="chips">

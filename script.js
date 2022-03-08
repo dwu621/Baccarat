@@ -112,31 +112,9 @@ const drawFourCards = async () => {
         // console.log(bankerTotalCards)
         handTotal();
     }
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
 }
 //
+
 const handTotal = () => {
     for (let i = 0; i < playerHand.length; i++) {
         if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
@@ -335,11 +313,12 @@ const payOut = () => {
 
 
 const dealHand = () => {
-
     clearTable();
 }
 
-
+rulesBtn.addEventListener("click", () => {
+    window.open('rules.html', '_blank')
+})
 shuffleBtn.addEventListener("click", newShoe);
 dealHandBtn.addEventListener("click", dealHand);
 

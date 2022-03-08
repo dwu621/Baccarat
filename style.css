@@ -1,6 +1,6 @@
 .card {
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
     height: 104px;
     width: 74px;
 }
