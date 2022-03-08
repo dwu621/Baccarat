@@ -6,7 +6,6 @@ let bankerWinsDisplay = document.querySelector("#banker-total-win");
 let tieWinsDisplay = document.querySelector("#tie-total-win");
 let playerWinsDisplay = document.querySelector("#player-total-win");
 
-
 /// Game Table 
 let shoeId = null;   
 let playerCard1 = document.querySelector("#player-card-1");
@@ -42,6 +41,28 @@ let bankerBet = 0;
 let rulesBtn =document.querySelector("#rules")
 let shuffleBtn = document.querySelector("#shuffle-cards")
 let dealHandBtn = document.querySelector("#deal-hand")
+
+const newShoe = async () => {
+    dealHandBtn.disabled = false; 
+    const response = await axios.get(
+        `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6`
+    )
+    shoeId = response.data.deck_id
+    console.log(shoeId)
+}
+
+shuffleBtn.addEventListener("click", newShoe)
+dealHandBtn.addEventListener("click", dealHand)
+
+
+
+
+
+
+
+
+
+
 
 
 
