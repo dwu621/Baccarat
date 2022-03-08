@@ -51,7 +51,7 @@ const newShoe = async () => {
         `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6`
     )
     shoeId = response.data.deck_id
-    console.log(shoeId)
+    // console.log(shoeId)
 }
 
 
@@ -81,9 +81,9 @@ const drawFourCards = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=4`
     )
-    console.log(response)
+    // console.log(response)
     const fourCards = response.data.cards
-    console.log(fourCards)
+    // console.log(fourCards)
     playerCard1.style.background = `url("${fourCards[0].image}")`
     playerHand.push(fourCards[0].value)
     playerTotalCards++
@@ -101,11 +101,12 @@ const drawFourCards = async () => {
     bankerTotalCards++
     
 
-    console.log(playerHand)
-    console.log(playerTotalCards)
-    console.log(bankerHand)
-    console.log(bankerTotalCards)
+    console.log(`playerhand ${playerHand}`)
+    // console.log(playerTotalCards)
+    console.log(`bankerhand ${bankerHand}`)
+    // console.log(bankerTotalCards)
     handTotal();
+    
 }
 
 const handTotal = () => {
@@ -137,48 +138,121 @@ const checkNatural = () => {
     if (playerTotal >= 8 || bankerTotal >= 8) {
         checkWinner()
     } else {
-        console.log('drawthirdcard')
+        // console.log("draw third")
+        playerDrawThirdCard()
     }
 }
 
 const checkWinner = () => {
     if (playerTotal > bankerTotal) {
         playerWins = true;
+        console.log("player win")
     } else if (bankerTotal > playerTotal) {
         bankerWins = true;
+        console.log("banker win")
     } else if (playerTotal === bankerTotal) {
         tieWins = true;
+        console.log("its a tie")
     }
 }
+
+const playerThirdCardTotal = () => {
+    playerTotal = 0;
+   
+    for (let i = 0; i < playerHand.length; i++) {
+        if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
+            playerTotal += 10;
+        } else if (playerHand[i] === "ACE") {
+            playerTotal++
+        } else {playerTotal += parseInt(playerHand[i])}
+    }
+    playerTotal = playerTotal % 10;
+    console.log(playerTotal)
+
+}
+
+const bankerThirdCardTotal = () => {
+    bankerTotal = 0;
+    for (let i = 0; i < bankerHand.length; i++) {
+     if (bankerHand[i] === "KING" || bankerHand[i] === "QUEEN" || bankerHand[i] === "JACK") {
+         bankerTotal += 10;
+     } else if (bankerHand[i] === "ACE") {
+         bankerTotal++
+     } else {bankerTotal += parseInt(bankerHand[i])}
+    }
+    bankerTotal = bankerTotal % 10;
+    console.log(bankerTotal)
+    
+}  
+
+
 const playerDrawThird = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=1`
     )
-    console.log(response)
+    // console.log(response)
     playerCard3.style.background = `url("${response.data.cards[0].image}")`
     playerHand.push(response.data.cards[0].value)
     playerTotalCards++
-    console.log(playerHand)
-    console.log(playerTotalCards)
+    console.log(`player hand${playerHand}`)
+    // console.log(playerTotalCards)
+    playerThirdCardTotal()
+    bankerDrawThirdCard()
+
 }
 
 const bankerDrawThird = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=1`
     )
-    console.log(response)
+    // console.log(response)
     bankerCard3.style.background = `url("${response.data.cards[0].image}")`
     bankerHand.push(response.data.cards[0].value)
     bankerTotalCards++
-    console.log(bankerHand)
-    console.log(bankerTotalCards)
+    console.log(`bankhand${bankerHand}`)
+    bankerThirdCardTotal()
 }
 
 
-// const drawThirdCard = () => {
-    // 
-// }
-// 
+const playerDrawThirdCard = () => {
+    if (playerTotal <= 5) {
+        playerDrawThird()
+    } else {
+        bankerDrawThirdCard()
+    }
+}
+
+const bankerDrawThirdCard = () => {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -192,12 +266,6 @@ const dealHand = () => {
 
 shuffleBtn.addEventListener("click", newShoe)
 dealHandBtn.addEventListener("click", dealHand)
-
-
-
-
-
-
 
 
 
