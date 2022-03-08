@@ -49,6 +49,9 @@ const newShoe = async () => {
     playerWinsDisplay.innerText = 0;
     tieWinDisplay.innerText = 0;
     bankerWinsDisplay.innerText = 0;
+    playerWinTotal = 0;
+    tieWinTotal = 0
+    bankerWinTotal = 0;
     dealHandBtn.disabled = false; 
     const response = await axios.get(
         `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6`
