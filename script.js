@@ -268,12 +268,13 @@ const updateScoreBoard = () => {
         playerWinTotal++;
         playerWinsDisplay.innerText = playerWinTotal;
         playerMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
+        bankerMessage.innerText = `Banker has ${bankerTotal}`;
         
     } else if (bankerWins === true) {
         bankerWinTotal++;
         bankerWinsDisplay.innerText = bankerWinTotal;
         bankerMessage.innerText = `Banker wins with ${bankerTotal} over ${playerTotal}!`;
-        
+        playerMessage.innerText = `Player has ${playerTotal}`;
     } else if (tieWins === true) {
         tieWinTotal++;
         tieWinDisplay.innerText = tieWinTotal;
