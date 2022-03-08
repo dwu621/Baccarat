@@ -20,8 +20,8 @@ let playerTotalCards = 0;
 let bankerTotalCards = 0;
 let playerHand = [];
 let bankerHand = [];
-let playerTotal = null;
-let bankerTotal = null;
+let playerTotal = 0;
+let bankerTotal = 0;
 let playerWins = false;
 let bankerWins = false;
 let tieWins = false;
@@ -51,12 +51,46 @@ const newShoe = async () => {
     console.log(shoeId)
 }
 
+
+
+// const dealHand = () => {
+    // clearTable
+// }
+const drawFourCard = async () => {
+    const response = await axios.get(
+        `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=4`
+    )
+    console.log(response)
+    const fourCards = response.data.cards
+    console.log(fourCards)
+    playerCard1.style.background = `url("${fourCards[0].image}")`
+    playerHand.push(fourCards[0].value)
+    playerTotalCards++
+
+    bankerCard1.style.background = `url("${fourCards[1].image}")`
+    bankerHand.push(fourCards[1].value)
+    bankerTotalCards++
+
+    playerCard2.style.background = `url("${fourCards[2].image}")`
+    playerHand.push(fourCards[2].value)
+    playerTotalCards++
+    
+    bankerCard2.style.background = `url("${fourCards[3].image}")`
+    bankerHand.push(fourCards[3].value)
+    bankerTotalCards++
+    
+    
+    console.log(playerHand)
+    console.log(playerTotalCards)
+    console.log(bankerHand)
+    console.log(bankerTotalCards)
+}
+
+
+
+
 shuffleBtn.addEventListener("click", newShoe)
-dealHandBtn.addEventListener("click", dealHand)
-
-
-
-
+dealHandBtn.addEventListener("click", drawFourCard)
 
 
 
