@@ -105,7 +105,7 @@ const drawFourCard = async () => {
     console.log(playerTotalCards)
     console.log(bankerHand)
     console.log(bankerTotalCards)
-    handTotal()
+    handTotal();
 }
 
 const handTotal = () => {
@@ -129,9 +129,27 @@ const handTotal = () => {
     }
     bankerTotal = bankerTotal % 10;
     console.log(bankerTotal)
+    checkNatural();
 }
 
 
+const checkNatural = () => {
+    if (playerTotal >= 8 || bankerTotal >= 8) {
+        checkWinner()
+    } else {
+        console.log('drawthirdcard')
+    }
+}
+
+const checkWinner = () => {
+    if (playerTotal > bankerTotal) {
+        playerWins = true;
+    } else if (bankerTotal > playerTotal) {
+        bankerWins = true;
+    } else if (playerTotal === bankerTotal) {
+        tieWins = true;
+    }
+}
 
 
 
