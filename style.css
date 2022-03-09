@@ -1,5 +1,6 @@
 body {
     background-color: #006400;
+    color: white;
 }
 
 #game-table {
@@ -42,3 +43,13 @@ input {
 }
 
 
+.player {
+    color: red;
+}
+
+.banker {
+    color: yellow;
+}
+.tie {
+    color: white;
+}
