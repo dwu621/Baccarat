@@ -98,8 +98,8 @@ const clearTable = () => {
     bankerNatural = false
     bothNatural = false
     naturalWin = false
-    playerMessage.innerText = "Player"
-    bankerMessage.innerText = "Banker"
+    // playerMessage.innerText = "PLAYER"
+    // bankerMessage.innerText = "BANKER"
     drawFourCards();
 }
 
@@ -301,39 +301,69 @@ const bankerDrawThirdCard = () => {
     // updateScoreBoard()
 }
 
-const naturalWinMessage = () => {
-
+const bothNaturalMessage = () => {
+    playerMessage.innerText = `PLAYER has Natural ${playerTotal}`
+    bankerMessage.innerText = `BANKER has Natural ${bankerTotal}`   
 }
 
+const regularMessage = () => {
+    playerMessage.innerText = `PLAYER has ${playerTotal}`
+    bankerMessage.innerText = `BANKER has ${bankerTotal}`
+}
+
+const naturalScoreBoard = () => {
+    if (playerWins === true) {
+        playerWinTotal++
+        if (bothNatural) {
+            bothNaturalMessage()
+        } else {
+            playerMessage.innerText = `PLAYER has Natural ${playerTotal}`
+            bankerMessage.innerText = `BANKER has ${bankerTotal}`
+        }
+        resultMessage.innerText = `PLAYER wins with Natural ${playerTotal}!`
+    } else if (bankerWins === true) {
+        bankerWinTotal++
+        if (bothNatural) {
+            bothNaturalMessage()
+        } else {
+            bankerMessage.innerText = `BANKER has Natural ${bankerTotal}`
+            playerMessage.innerText = `PLAYER has ${playerTotal}`
+        }
+        resultMessage.innerText = `BANKER wins with Natural ${bankerTotal}!`
+    } else if (tieWins === true) {
+        tieWinTotal++
+        bothNaturalMessage()
+        resultMessage.innerText = `PLAYER and BANKER have Natural ${playerTotal}. It's a Natural tie!`
+    }
+    payOut()
+}
+
+const regularScoreBoard = () => {
+    if (playerWins === true) {
+        playerWinTotal++
+        playerWinsDisplay.innerText = playerWinTotal
+        regularMessage()
+        resultMessage.innerText = `PLAYER wins with ${playerTotal} over ${bankerTotal}!`     
+    } else if (bankerWins === true) {
+        bankerWinTotal++
+        bankerWinsDisplay.innerText = bankerWinTotal;
+        regularMessage()
+        resultMessage.innerText = `BANKER wins with ${bankerTotal} over ${playerTotal}!`
+    } else if (tieWins === true) {
+        tieWinTotal++
+        tieWinDisplay.innerText = tieWinTotal;
+        regularMessage()
+        resultMessage.innerText = `PLAYER and BANKER have ${playerTotal}. It's a tie!`
+    } 
+    payOut()
+}
 
 const updateScoreBoard = () => {
-    if (playerWins === true) {
-        playerWinTotal++;
-        playerWinsDisplay.innerText = playerWinTotal;
-        if (naturalWin === true) {
-            playerMessage.innerText = `Player has ${playerTotal}`;
-            bankerMessage.innerText = `Banker has ${bankerTotal}`;
-            resultMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
-        
-        }
-        playerMessage.innerText = `Player has ${playerTotal}`;
-        bankerMessage.innerText = `Banker has ${bankerTotal}`;
-        resultMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
-        
-    } else if (bankerWins === true) {
-        bankerWinTotal++;
-        bankerWinsDisplay.innerText = bankerWinTotal;
-        bankerMessage.innerText = `Banker has ${bankerTotal}`;
-        playerMessage.innerText = `Player has ${playerTotal}`;
-        resultMessage.innerText = `Banker wins with ${bankerTotal} over ${playerTotal}!`;
-    } else if (tieWins === true) {
-        tieWinTotal++;
-        tieWinDisplay.innerText = tieWinTotal;
-        bankerMessage.innerText = `Banker has ${bankerTotal}`;
-        playerMessage.innerText = `Player has ${playerTotal}`;
-        resultMessage.innerText = `Player and Banker both have ${playerTotal}. It's a tie!`
-    } 
-    payOut();
+    if (naturalWin) {
+        naturalScoreBoard()
+    } else {
+        regularScoreBoard()
+    }
 }
 
 const payOut = () => {
@@ -355,7 +385,7 @@ const payOut = () => {
     } else if (tieWins === true) {
         totalChip += (tieBet * 8);
     }
-    totalChipDisplay.innerText = `Total Chips: ${totalChip}`;
+    totalChipDisplay.innerText = `Total Chips: ${totalChip}`
 }
 
 const buyIn = () => {
@@ -373,7 +403,7 @@ const dealHand = () => {
     } else if (totalBet > totalChip) {
         alert("Not enough chips. Please buy in!")
         
-    } else clearTable();
+    } else clearTable()
     // clearTable();
 }
 
@@ -381,8 +411,8 @@ const dealHand = () => {
 rulesBtn.addEventListener("click", () => {
     window.open('rules.html', '_blank')
 })
-shuffleBtn.addEventListener("click", newShoe);
-dealHandBtn.addEventListener("click", dealHand);
+shuffleBtn.addEventListener("click", newShoe)
+dealHandBtn.addEventListener("click", dealHand)
 buyInBtn.addEventListener("click", buyIn)
 
 
