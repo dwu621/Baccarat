@@ -1,8 +1,41 @@
-.card {
+body {
+    background-color: #006400;
+}
+
+#game-table {
+ text-align: center;
+}
+
+.player-card {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    height: 104px;
+    width: 74px;
+    flex-direction: row;
+}
+
+.banker-card {
     background-size: contain !important;
     background-repeat: no-repeat !important;
     height: 104px;
     width: 74px;
 }
+
+#player-card-row {
+    display: flex;
+
+}
+
+#banker-card-row {
+    display: flex;
+    
+}
+
+#card-area {
+    display: flex;
+    justify-content:space-around;
+}
+
+
 
 

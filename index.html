@@ -10,11 +10,9 @@
     <title>Baccarat</title>
 </head>
 <body>
- 
-    
-    <section id="game-table">
+    <div id="game-table">
         
-        <section id="score-board">
+        <div id="score-board">
             <table>
                 <tr>
                     <th>Banker</th>
@@ -27,42 +25,43 @@
                     <td id="player-total-win">0</td>
                 </tr>
             </table>
-        </section>
+        </div>
+        <div id="game-message">
+            <h2 id="result-message">asdasd</h2>
+        </div>
+        <div id="card-area">
+            <div id="player-cards">
+                <h2 class="player-head">Player</h2>
+                <div id="player-card-row" class="card-row">
+                    <div id="player-card-1" class="card player-card"></div>
+                    <div id="player-card-2" class="card player-card"></div>
+                    <div id="player-card-3" class="card player-card"></div>
+                
+                </div>
+            </div>   
+            <div id="banker-cards" >
+                <h2 class="banker-head">Banker</h2>
+                <div id="banker-card-row" class="card-row">
+                    <div id="banker-card-3" class="card banker-card"></div>
+                    <div id="banker-card-2" class="card banker-card"></div>
+                    <div id="banker-card-1" class="card banker-card"></div>
+                </div> 
+            </div>
+        </div>
         
-        <section id="player-cards">
-            <h1 class="player-head">PLAYER</h2>
-            
-            <div id="player-card-row">
-                <div id="player-card-1" class="card" data-index="0"></div>
-                <div id="player-card-2" class="card" data-index="1"></div>
-                <div id="player-card-3" class="card" data-index="2"></div>
-            </div>
-            
-        </section>
-
-        <section id="banker-cards" >
-            <h1 class="banker-head">BANKER</h2>
-            <div id="banker-card-row">
-                <div id="banker-card-1" class="card" data-index="0"></div>
-                <div id="banker-card-2" class="card" data-index="1"></div>
-                <div id="banker-card-3" class="card" data-index="2"></div>
-            </div>
-           
-        </section>
-
-        <section id="betting-area">
+        <div id="betting-area">
             <div class="tie-bet-area">
-                <h2 class="tie-head">Tie</h1>
+                <h2 class="tie-head">Tie</h2>
                 <input class="tie-bet" type="number" min="25" step="5" value="0">
             </div>
             
             <div class="banker-bet-area">
-                <h1 class="banker-bet-area">BANKER</h1>
+                <h2 class="banker-bet-area">Banker</h2>
                 <input class="banker-bet" type="number" min="25" step="5" value="0">
             </div>
             
-            <div class="banker-bet-area">
-                <h1 class="player-bet-area">PLAYER</h1>
+            <div class="player-bet-area">
+                <h2 class="player-bet-area">Player</h2>
                 <input class="player-bet" type="number" min="25" step="5" value="0">
             </div>
             
@@ -73,11 +72,8 @@
             <button id="rules">Rules</button>
             <button id="shuffle-cards">Shuffle Cards</button>
             <button id="deal-hand" disabled>Deal Hand</button> 
-        </section>
+        </div>
    
-    </section>
-    
-
-    <section></section>
+    </div>
 </body>
 </html>
