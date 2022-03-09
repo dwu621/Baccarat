@@ -5,7 +5,7 @@ let playerWinTotal = 0;
 let bankerWinsDisplay = document.querySelector("#banker-total-win");
 let tieWinDisplay = document.querySelector("#tie-total-win");
 let playerWinsDisplay = document.querySelector("#player-total-win");
-let resultMessage = document.querySelector("#result-message")
+let resultMessage = document.querySelector("#result-message");
 
 /// Game Table 
 let playerMessage = document.querySelector(".player-head");
@@ -49,33 +49,31 @@ let totalBet = 0;
 /// Buttons
 let rulesBtn =document.querySelector("#rules");
 let shuffleBtn = document.querySelector("#shuffle-cards");
-let dealHandBtn = document.querySelector("#deal-hand")
-let buyInBtn = document.querySelector("#buy-in")
+let dealHandBtn = document.querySelector("#deal-hand");
+let buyInBtn = document.querySelector("#buy-in");
 
 const newShoe = async () => {
-    playerCard1.style.background = "";
-    playerCard2.style.background = "";
-    playerCard3.style.background = "";
-    bankerCard1.style.background = "";
-    bankerCard2.style.background = "";
-    bankerCard3.style.background = "";
+    playerCard1.style.background = ""
+    playerCard2.style.background = ""
+    playerCard3.style.background = ""
+    bankerCard1.style.background = ""
+    bankerCard2.style.background = ""
+    bankerCard3.style.background = ""
     resultMessage.innerText = "Place your bets!"
     playerMessage.innerText = "PLAYER"
     bankerMessage.innerText = "BANKER"
-    playerWinsDisplay.innerText = 0;
-    tieWinDisplay.innerText = 0;
-    bankerWinsDisplay.innerText = 0;
-    playerWinTotal = 0;
+    playerWinsDisplay.innerText = 0
+    tieWinDisplay.innerText = 0
+    bankerWinsDisplay.innerText = 0
+    playerWinTotal = 0
     tieWinTotal = 0
-    bankerWinTotal = 0;
-    dealHandBtn.disabled = false; 
+    bankerWinTotal = 0
+    dealHandBtn.disabled = false 
     const response = await axios.get(
         `http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=8`
     )
     shoeId = response.data.deck_id
-    // console.log(shoeId)
 }
-
 
 
 const clearTable = () => {
@@ -98,9 +96,7 @@ const clearTable = () => {
     bankerNatural = false
     bothNatural = false
     naturalWin = false
-    // playerMessage.innerText = "PLAYER"
-    // bankerMessage.innerText = "BANKER"
-    drawFourCards();
+    drawFourCards()
 }
 
 
@@ -110,11 +106,9 @@ const drawFourCards = async () => {
     )
     const fourCards = response.data.cards
     if (response.data.success === false || response.data.remaining < 3) {
-        dealHandBtn.disabled = true;
+        dealHandBtn.disabled = true
         alert("Shuffle Cards")
-
     } else {
-        console.log(fourCards)
         playerCard1.style.background = `url("${fourCards[0].image}")`
         playerHand.push(fourCards[0].value)
         playerTotalCards++
@@ -124,47 +118,35 @@ const drawFourCards = async () => {
         playerCard2.style.background = `url("${fourCards[2].image}")`
         playerHand.push(fourCards[2].value)
         playerTotalCards++
-
         bankerCard2.style.background = `url("${fourCards[3].image}")`
         bankerHand.push(fourCards[3].value)
         bankerTotalCards++
-
-        console.log(`playerhand ${playerHand}`)
-        // console.log(playerTotalCards)
-        console.log(`bankerhand ${bankerHand}`)
-        // console.log(bankerTotalCards)
-        handTotal();
+     handTotal()
     }
 }
-//
+
 
 const handTotal = () => {
     for (let i = 0; i < playerHand.length; i++) {
         if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
-            playerTotal += 10;
+            playerTotal += 10
         } else if (playerHand[i] === "ACE") {
             playerTotal++
         } else {playerTotal += parseInt(playerHand[i])}
     }
-
-    playerTotal = playerTotal % 10;
-    console.log(`player total iss ${playerTotal}`)
+    playerTotal = playerTotal % 10
     
     for (let i = 0; i < bankerHand.length; i++) {
         if (bankerHand[i] === "KING" || bankerHand[i] === "QUEEN" || bankerHand[i] === "JACK") {
-            bankerTotal += 10;
+            bankerTotal += 10
         } else if (bankerHand[i] === "ACE") {
             bankerTotal++
         } else {bankerTotal += parseInt(bankerHand[i])}
     }
     bankerTotal = bankerTotal % 10;
-    console.log(`banker total is ${bankerTotal}`)
     checkNatural();
 }
-/*
-if player >= 8 then player natural = true
-if banker >= 8 then banker natural true
-*/
+
 const checkNatural = () => {
     if (playerTotal >= 8 || bankerTotal >= 8) {
         if (playerTotal >= 8 && bankerTotal >= 8) {
@@ -177,22 +159,18 @@ const checkNatural = () => {
         naturalWin = true;
         checkWinner()
     } else {
-        // console.log("draw third")
         playerDrawThirdCard()
     }
-    // updateScoreBoard()
+  
 }
 
 const checkWinner = () => {
     if (playerTotal > bankerTotal) {
         playerWins = true;
-        console.log("player win")
     } else if (bankerTotal > playerTotal) {
         bankerWins = true;
-        console.log("banker win")
     } else if (playerTotal === bankerTotal) {
         tieWins = true;
-        console.log("its a tie")
     }
     updateScoreBoard()
 }
@@ -202,13 +180,13 @@ const playerThirdCardTotal = () => {
    
     for (let i = 0; i < playerHand.length; i++) {
         if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
-            playerTotal += 10;
+            playerTotal += 10
         } else if (playerHand[i] === "ACE") {
             playerTotal++
         } else {playerTotal += parseInt(playerHand[i])}
     }
-    playerTotal = playerTotal % 10;
-    console.log(`player second total is ${playerTotal}`)
+    playerTotal = playerTotal % 10
+    
 
 }
 
@@ -222,7 +200,7 @@ const bankerThirdCardTotal = () => {
      } else {bankerTotal += parseInt(bankerHand[i])}
     }
     bankerTotal = bankerTotal % 10;
-    console.log(`banker second total is ${bankerTotal}`)
+  
     
 }  
 
@@ -231,12 +209,12 @@ const playerDrawThird = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=1`
     )
-    // console.log(response)
+   
     playerCard3.style.background = `url("${response.data.cards[0].image}")`
     playerHand.push(response.data.cards[0].value)
     playerTotalCards++
-    console.log(`player hand${playerHand}`)
-    // console.log(playerTotalCards)
+    
+    
     playerThirdCardTotal()
     bankerDrawThirdCard()
 
@@ -246,11 +224,9 @@ const bankerDrawThird = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=1`
     )
-    // console.log(response)
     bankerCard3.style.background = `url("${response.data.cards[0].image}")`
     bankerHand.push(response.data.cards[0].value)
     bankerTotalCards++
-    console.log(`bankhand${bankerHand}`)
     bankerThirdCardTotal()
     checkWinner()
 }
@@ -265,9 +241,6 @@ const playerDrawThirdCard = () => {
 }
 
 const bankerDrawThirdCard = () => {
-    console.log(`player has ${playerHand.length} cards `)
-    console.log(`banker second total is ${bankerTotal}`)
-    console.log(playerHand)
     if (!playerHand[2]) {
         if (bankerTotal <= 5) {
             bankerDrawThird()
@@ -367,13 +340,7 @@ const updateScoreBoard = () => {
 }
 
 const payOut = () => {
-    // tieBet = parseInt(tieBetInput.value)
-    // playerBet = parseInt(playerBetInput.value)
-    // bankerBet = parseInt(bankerBetInput.value)
     let commission = (bankerBet * 0.05)
-    console.log(tieBet)
-    console.log(playerBet)
-    console.log(bankerBet)
     if (playerWins === true) {
         totalChip += playerBet;
         totalChip -= tieBet;
