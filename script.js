@@ -40,11 +40,13 @@ let totalChip = 1000;
 let tieBet = 0;
 let playerBet = 0;
 let bankerBet = 0;
+let totalBet = 0;
 
 /// Buttons
 let rulesBtn =document.querySelector("#rules");
 let shuffleBtn = document.querySelector("#shuffle-cards");
 let dealHandBtn = document.querySelector("#deal-hand")
+let buyInBtn = document.querySelector("#buy-in")
 
 const newShoe = async () => {
     playerCard1.style.background = "";
@@ -285,7 +287,7 @@ const updateScoreBoard = () => {
     if (playerWins === true) {
         playerWinTotal++;
         playerWinsDisplay.innerText = playerWinTotal;
-        playerMessage.innerText = `Player had ${playerTotal}`;
+        playerMessage.innerText = `Player has ${playerTotal}`;
         bankerMessage.innerText = `Banker has ${bankerTotal}`;
         resultMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
         
@@ -306,9 +308,9 @@ const updateScoreBoard = () => {
 }
 
 const payOut = () => {
-    tieBet = parseInt(tieBetInput.value)
-    playerBet = parseInt(playerBetInput.value)
-    bankerBet = parseInt(bankerBetInput.value)
+    // tieBet = parseInt(tieBetInput.value)
+    // playerBet = parseInt(playerBetInput.value)
+    // bankerBet = parseInt(bankerBetInput.value)
     let commission = (bankerBet * 0.05)
     console.log(tieBet)
     console.log(playerBet)
@@ -318,7 +320,6 @@ const payOut = () => {
         totalChip -= tieBet;
         totalChip -= bankerBet;
     } else if (bankerWins === true) {
-        
         totalChip += (bankerBet - commission)
         totalChip -= tieBet;
         totalChip -= playerBet;
@@ -328,16 +329,31 @@ const payOut = () => {
     totalChipDisplay.innerText = `Total Chips: ${totalChip}`;
 }
 
+const buyIn = () => {
+    totalChip += 1000;
+    totalChipDisplay.innerText = `Total Chips: ${totalChip}`
+}
 
 const dealHand = () => {
-    clearTable();
+    tieBet = parseInt(tieBetInput.value)
+    playerBet = parseInt(playerBetInput.value)
+    bankerBet = parseInt(bankerBetInput.value)
+    totalBet = tieBet + playerBet + bankerBet
+    if (totalBet > totalChip) {
+        alert("Not enough chips. Please buy in!")
+        
+    } else clearTable();
+    // clearTable();
 }
+
 
 rulesBtn.addEventListener("click", () => {
     window.open('rules.html', '_blank')
 })
 shuffleBtn.addEventListener("click", newShoe);
 dealHandBtn.addEventListener("click", dealHand);
+buyInBtn.addEventListener("click", buyIn)
+
 
 
 
