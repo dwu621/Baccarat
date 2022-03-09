@@ -29,6 +29,9 @@ let bankerTotal = 0;
 let playerWins = false;
 let bankerWins = false;
 let tieWins = false;
+let naturalWin = false;
+let playerNatural = false;
+let bankerNatural = false;
 
 /// Betting Area
 let tieBetInput = document.querySelector(".tie-bet");
@@ -75,23 +78,26 @@ const newShoe = async () => {
 
 
 const clearTable = () => {
-    playerCard1.style.background = "";
-    playerCard2.style.background = "";
-    playerCard3.style.background = "";
-    bankerCard1.style.background = "";
-    bankerCard2.style.background = "";
-    bankerCard3.style.background = "";
-    playerTotalCards = 0;
-    bankerTotalCards = 0;
-    playerHand = [];
-    bankerHand = [];
-    playerTotal = 0;
-    bankerTotal = 0;
-    playerWins = false;
-    bankerWins = false;
-    tieWins = false;
-    playerMessage.innerText = "Player";
-    bankerMessage.innerText = "Banker";
+    playerCard1.style.background = ""
+    playerCard2.style.background = ""
+    playerCard3.style.background = ""
+    bankerCard1.style.background = ""
+    bankerCard2.style.background = ""
+    bankerCard3.style.background = ""
+    playerTotalCards = 0
+    bankerTotalCards = 0
+    playerHand = []
+    bankerHand = []
+    playerTotal = 0
+    bankerTotal = 0
+    playerWins = false
+    bankerWins = false
+    tieWins = false
+    playerNatural = false
+    bankerNatural = false
+    naturalWin = false
+    playerMessage.innerText = "Player"
+    bankerMessage.innerText = "Banker"
     drawFourCards();
 }
 
@@ -153,10 +159,19 @@ const handTotal = () => {
     console.log(`banker total is ${bankerTotal}`)
     checkNatural();
 }
-
-
+/*
+if player >= 8 then player natural = true
+if banker >= 8 then banker natural true
+*/
 const checkNatural = () => {
     if (playerTotal >= 8 || bankerTotal >= 8) {
+        if (playerTotal >= 8) {
+            playerNatural = true
+        } 
+        if (bankerTotal >= 8) {
+            bankerNatural = true
+        }
+        naturalWin = true;
         checkWinner()
     } else {
         // console.log("draw third")
@@ -248,7 +263,7 @@ const playerDrawThirdCard = () => {
 
 const bankerDrawThirdCard = () => {
     console.log(`player has ${playerHand.length} cards `)
-    console.log(`banker second total iis ${bankerTotal}`)
+    console.log(`banker second total is ${bankerTotal}`)
     console.log(playerHand)
     if (!playerHand[2]) {
         if (bankerTotal <= 5) {
@@ -283,10 +298,21 @@ const bankerDrawThirdCard = () => {
     // updateScoreBoard()
 }
 
+const naturalWinMessage = () => {
+
+}
+
+
 const updateScoreBoard = () => {
     if (playerWins === true) {
         playerWinTotal++;
         playerWinsDisplay.innerText = playerWinTotal;
+        if (naturalWin === true) {
+            playerMessage.innerText = `Player has ${playerTotal}`;
+            bankerMessage.innerText = `Banker has ${bankerTotal}`;
+            resultMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
+        
+        }
         playerMessage.innerText = `Player has ${playerTotal}`;
         bankerMessage.innerText = `Banker has ${bankerTotal}`;
         resultMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
