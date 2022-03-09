@@ -32,6 +32,7 @@ let tieWins = false;
 let naturalWin = false;
 let playerNatural = false;
 let bankerNatural = false;
+let bothNatural = true;
 
 /// Betting Area
 let tieBetInput = document.querySelector(".tie-bet");
@@ -95,6 +96,7 @@ const clearTable = () => {
     tieWins = false
     playerNatural = false
     bankerNatural = false
+    bothNatural = false
     naturalWin = false
     playerMessage.innerText = "Player"
     bankerMessage.innerText = "Banker"
@@ -165,10 +167,11 @@ if banker >= 8 then banker natural true
 */
 const checkNatural = () => {
     if (playerTotal >= 8 || bankerTotal >= 8) {
-        if (playerTotal >= 8) {
+        if (playerTotal >= 8 && bankerTotal >= 8) {
+            bothNatural = true
+        } else if (playerTotal >= 8) {
             playerNatural = true
-        } 
-        if (bankerTotal >= 8) {
+        } else if (bankerTotal >= 8) {
             bankerNatural = true
         }
         naturalWin = true;
