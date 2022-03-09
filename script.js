@@ -1,56 +1,56 @@
 /// Scoreboard components
-let bankerWinTotal = 0; 
-let tieWinTotal = 0;
-let playerWinTotal = 0;
-let bankerWinsDisplay = document.querySelector("#banker-total-win");
-let tieWinDisplay = document.querySelector("#tie-total-win");
-let playerWinsDisplay = document.querySelector("#player-total-win");
-let resultMessage = document.querySelector("#result-message");
+let bankerWinTotal = 0
+let tieWinTotal = 0
+let playerWinTotal = 0
+let bankerWinsDisplay = document.querySelector("#banker-total-win")
+let tieWinDisplay = document.querySelector("#tie-total-win")
+let playerWinsDisplay = document.querySelector("#player-total-win")
+let resultMessage = document.querySelector("#result-message")
 
 /// Game Table 
-let playerMessage = document.querySelector(".player-head");
-let bankerMessage = document.querySelector(".banker-head");
+let playerMessage = document.querySelector(".player-head")
+let bankerMessage = document.querySelector(".banker-head")
 let shoeId = null;   
-let playerCard1 = document.querySelector("#player-card-1");
-let playerCard2 = document.querySelector("#player-card-2");
-let playerCard3 = document.querySelector("#player-card-3");
-let bankerCard1 = document.querySelector("#banker-card-1");
-let bankerCard2 = document.querySelector("#banker-card-2");
-let bankerCard3 = document.querySelector("#banker-card-3");
+let playerCard1 = document.querySelector("#player-card-1")
+let playerCard2 = document.querySelector("#player-card-2")
+let playerCard3 = document.querySelector("#player-card-3")
+let bankerCard1 = document.querySelector("#banker-card-1")
+let bankerCard2 = document.querySelector("#banker-card-2")
+let bankerCard3 = document.querySelector("#banker-card-3")
 
 
 /// Game Flow
-let playerTotalCards = 0;
-let bankerTotalCards = 0;
-let playerHand = [];
-let bankerHand = [];
-let playerTotal = 0;
-let bankerTotal = 0;
-let playerWins = false;
-let bankerWins = false;
-let tieWins = false;
-let naturalWin = false;
-let playerNatural = false;
-let bankerNatural = false;
-let bothNatural = true;
+let playerTotalCards = 0
+let bankerTotalCards = 0
+let playerHand = []
+let bankerHand = []
+let playerTotal = 0
+let bankerTotal = 0
+let playerWins = false
+let bankerWins = false
+let tieWins = false
+let naturalWin = false
+let playerNatural = false
+let bankerNatural = false
+let bothNatural = true
 
 /// Betting Area
-let tieBetInput = document.querySelector(".tie-bet");
-let playerBetInput = document.querySelector(".player-bet");
-let bankerBetInput = document.querySelector(".banker-bet");
-let totalChipDisplay = document.querySelector("#chip-total");
+let tieBetInput = document.querySelector(".tie-bet")
+let playerBetInput = document.querySelector(".player-bet")
+let bankerBetInput = document.querySelector(".banker-bet")
+let totalChipDisplay = document.querySelector("#chip-total")
 
-let totalChip = 1000;
-let tieBet = 0;
-let playerBet = 0;
-let bankerBet = 0;
-let totalBet = 0;
+let totalChip = 1000
+let tieBet = 0
+let playerBet = 0
+let bankerBet = 0
+let totalBet = 0
 
 /// Buttons
-let rulesBtn =document.querySelector("#rules");
-let shuffleBtn = document.querySelector("#shuffle-cards");
-let dealHandBtn = document.querySelector("#deal-hand");
-let buyInBtn = document.querySelector("#buy-in");
+let rulesBtn =document.querySelector("#rules")
+let shuffleBtn = document.querySelector("#shuffle-cards")
+let dealHandBtn = document.querySelector("#deal-hand")
+let buyInBtn = document.querySelector("#buy-in")
 
 const newShoe = async () => {
     playerCard1.style.background = ""
@@ -143,8 +143,8 @@ const handTotal = () => {
             bankerTotal++
         } else {bankerTotal += parseInt(bankerHand[i])}
     }
-    bankerTotal = bankerTotal % 10;
-    checkNatural();
+    bankerTotal = bankerTotal % 10
+    checkNatural()
 }
 
 const checkNatural = () => {
@@ -155,8 +155,8 @@ const checkNatural = () => {
             playerNatural = true
         } else if (bankerTotal >= 8) {
             bankerNatural = true
-        }
-        naturalWin = true;
+        
+        naturalWin = true
         checkWinner()
     } else {
         playerDrawThirdCard()
@@ -166,17 +166,17 @@ const checkNatural = () => {
 
 const checkWinner = () => {
     if (playerTotal > bankerTotal) {
-        playerWins = true;
+        playerWins = true
     } else if (bankerTotal > playerTotal) {
-        bankerWins = true;
+        bankerWins = true
     } else if (playerTotal === bankerTotal) {
-        tieWins = true;
+        tieWins = true
     }
     updateScoreBoard()
 }
 
 const playerThirdCardTotal = () => {
-    playerTotal = 0;
+    playerTotal = 0
    
     for (let i = 0; i < playerHand.length; i++) {
         if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
@@ -191,15 +191,15 @@ const playerThirdCardTotal = () => {
 }
 
 const bankerThirdCardTotal = () => {
-    bankerTotal = 0;
+    bankerTotal = 0
     for (let i = 0; i < bankerHand.length; i++) {
      if (bankerHand[i] === "KING" || bankerHand[i] === "QUEEN" || bankerHand[i] === "JACK") {
-         bankerTotal += 10;
+         bankerTotal += 10
      } else if (bankerHand[i] === "ACE") {
          bankerTotal++
      } else {bankerTotal += parseInt(bankerHand[i])}
     }
-    bankerTotal = bankerTotal % 10;
+    bankerTotal = bankerTotal % 10
   
     
 }  
@@ -209,15 +209,11 @@ const playerDrawThird = async () => {
     const response = await axios.get(
         `https://deckofcardsapi.com/api/deck/${shoeId}/draw/?count=1`
     )
-   
     playerCard3.style.background = `url("${response.data.cards[0].image}")`
     playerHand.push(response.data.cards[0].value)
     playerTotalCards++
-    
-    
-    playerThirdCardTotal()
+     playerThirdCardTotal()
     bankerDrawThirdCard()
-
 }
 
 const bankerDrawThird = async () => {
@@ -271,7 +267,6 @@ const bankerDrawThirdCard = () => {
             checkWinner()
         }
     }
-    // updateScoreBoard()
 }
 
 const bothNaturalMessage = () => {
@@ -324,7 +319,7 @@ const regularScoreBoard = () => {
         resultMessage.innerText = `BANKER wins with ${bankerTotal} over ${playerTotal}!`
     } else if (tieWins === true) {
         tieWinTotal++
-        tieWinDisplay.innerText = tieWinTotal;
+        tieWinDisplay.innerText = tieWinTotal
         regularMessage()
         resultMessage.innerText = `PLAYER and BANKER have ${playerTotal}. It's a tie!`
     } 
@@ -342,21 +337,21 @@ const updateScoreBoard = () => {
 const payOut = () => {
     let commission = (bankerBet * 0.05)
     if (playerWins === true) {
-        totalChip += playerBet;
-        totalChip -= tieBet;
-        totalChip -= bankerBet;
+        totalChip += playerBet
+        totalChip -= tieBet
+        totalChip -= bankerBet
     } else if (bankerWins === true) {
         totalChip += (bankerBet - commission)
-        totalChip -= tieBet;
-        totalChip -= playerBet;
+        totalChip -= tieBet
+        totalChip -= playerBet
     } else if (tieWins === true) {
-        totalChip += (tieBet * 8);
+        totalChip += (tieBet * 8)
     }
     totalChipDisplay.innerText = `Total Chips: ${totalChip}`
 }
 
 const buyIn = () => {
-    totalChip += 1000;
+    totalChip += 1000
     totalChipDisplay.innerText = `Total Chips: ${totalChip}`
 }
 
@@ -371,7 +366,6 @@ const dealHand = () => {
         alert("Not enough chips. Please buy in!")
         
     } else clearTable()
-    // clearTable();
 }
 
 
