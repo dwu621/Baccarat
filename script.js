@@ -5,6 +5,7 @@ let playerWinTotal = 0;
 let bankerWinsDisplay = document.querySelector("#banker-total-win");
 let tieWinDisplay = document.querySelector("#tie-total-win");
 let playerWinsDisplay = document.querySelector("#player-total-win");
+let resultMessage = document.querySelector("#result-message")
 
 /// Game Table 
 let playerMessage = document.querySelector(".player-head");
@@ -275,18 +276,22 @@ const updateScoreBoard = () => {
     if (playerWins === true) {
         playerWinTotal++;
         playerWinsDisplay.innerText = playerWinTotal;
-        playerMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
+        playerMessage.innerText = `Player had ${playerTotal}`;
         bankerMessage.innerText = `Banker has ${bankerTotal}`;
+        resultMessage.innerText = `Player wins with ${playerTotal} over ${bankerTotal}!`;
         
     } else if (bankerWins === true) {
         bankerWinTotal++;
         bankerWinsDisplay.innerText = bankerWinTotal;
-        bankerMessage.innerText = `Banker wins with ${bankerTotal} over ${playerTotal}!`;
+        bankerMessage.innerText = `Banker has ${bankerTotal}`;
         playerMessage.innerText = `Player has ${playerTotal}`;
+        resultMessage.innerText = `Banker wins with ${bankerTotal} over ${playerTotal}!`;
     } else if (tieWins === true) {
         tieWinTotal++;
         tieWinDisplay.innerText = tieWinTotal;
-        playerMessage.innerText = `Player and Banker both have ${playerTotal}. It's a tie!`
+        bankerMessage.innerText = `Banker has ${bankerTotal}`;
+        playerMessage.innerText = `Player has ${playerTotal}`;
+        resultMessage.innerText = `Player and Banker both have ${playerTotal}. It's a tie!`
     } 
     payOut();
 }

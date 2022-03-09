@@ -36,6 +36,9 @@ body {
     justify-content:space-around;
 }
 
-
+input {
+    width: 4%;
+    text-align: center;
+}
 
 
