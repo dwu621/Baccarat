@@ -47,6 +47,15 @@ let shuffleBtn = document.querySelector("#shuffle-cards");
 let dealHandBtn = document.querySelector("#deal-hand")
 
 const newShoe = async () => {
+    playerCard1.style.background = "";
+    playerCard2.style.background = "";
+    playerCard3.style.background = "";
+    bankerCard1.style.background = "";
+    bankerCard2.style.background = "";
+    bankerCard3.style.background = "";
+    resultMessage.innerText = "Place your bets!"
+    playerMessage.innerText = "PLAYER"
+    bankerMessage.innerText = "BANKER"
     playerWinsDisplay.innerText = 0;
     tieWinDisplay.innerText = 0;
     bankerWinsDisplay.innerText = 0;
