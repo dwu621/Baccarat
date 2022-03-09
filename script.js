@@ -339,7 +339,9 @@ const dealHand = () => {
     playerBet = parseInt(playerBetInput.value)
     bankerBet = parseInt(bankerBetInput.value)
     totalBet = tieBet + playerBet + bankerBet
-    if (totalBet > totalChip) {
+    if (totalBet === 0) {
+        alert("Please place bets!")
+    } else if (totalBet > totalChip) {
         alert("Not enough chips. Please buy in!")
         
     } else clearTable();
