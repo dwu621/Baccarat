@@ -10,16 +10,16 @@ body {
 .player-card {
     background-size: contain !important;
     background-repeat: no-repeat !important;
-    height: 104px;
-    width: 74px;
+    height: 139px;
+    width: 100px;
     flex-direction: row;
 }
 
 .banker-card {
     background-size: contain !important;
     background-repeat: no-repeat !important;
-    height: 104px;
-    width: 74px;
+    height: 139px;
+    width: 100px;
 }
 
 #player-card-row {
