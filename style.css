@@ -7,6 +7,10 @@ body {
  text-align: center;
 }
 
+.card {
+    margin: 0 5px;
+}
+
 .player-card {
     background-size: contain !important;
     background-repeat: no-repeat !important;
@@ -52,4 +56,10 @@ input {
 }
 .tie {
     color: white;
+}
+
+.third-card {
+    transform: rotate(90deg);
+    margin: 0 25px;
+    
 }

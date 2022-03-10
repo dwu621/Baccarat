@@ -1,22 +1,22 @@
 /// Scoreboard components
-let bankerWinTotal = 0; 
-let tieWinTotal = 0;
-let playerWinTotal = 0;
-let bankerWinsDisplay = document.querySelector("#banker-total-win");
-let tieWinDisplay = document.querySelector("#tie-total-win");
-let playerWinsDisplay = document.querySelector("#player-total-win");
-let resultMessage = document.querySelector("#result-message");
+let bankerWinTotal = 0
+let tieWinTotal = 0
+let playerWinTotal = 0
+let bankerWinsDisplay = document.querySelector("#banker-total-win")
+let tieWinDisplay = document.querySelector("#tie-total-win")
+let playerWinsDisplay = document.querySelector("#player-total-win")
+let resultMessage = document.querySelector("#result-message")
 
 /// Game Table 
-let playerMessage = document.querySelector(".player-head");
-let bankerMessage = document.querySelector(".banker-head");
-let shoeId = null;   
-let playerCard1 = document.querySelector("#player-card-1");
-let playerCard2 = document.querySelector("#player-card-2");
-let playerCard3 = document.querySelector("#player-card-3");
-let bankerCard1 = document.querySelector("#banker-card-1");
-let bankerCard2 = document.querySelector("#banker-card-2");
-let bankerCard3 = document.querySelector("#banker-card-3");
+let playerMessage = document.querySelector(".player-head")
+let bankerMessage = document.querySelector(".banker-head")
+let shoeId = null 
+let playerCard1 = document.querySelector("#player-card-1")
+let playerCard2 = document.querySelector("#player-card-2")
+let playerCard3 = document.querySelector("#player-card-3")
+let bankerCard1 = document.querySelector("#banker-card-1")
+let bankerCard2 = document.querySelector("#banker-card-2")
+let bankerCard3 = document.querySelector("#banker-card-3")
 
 
 /// Game Flow
@@ -177,7 +177,6 @@ const checkWinner = () => {
 
 const playerThirdCardTotal = () => {
     playerTotal = 0;
-   
     for (let i = 0; i < playerHand.length; i++) {
         if (playerHand[i] === "KING" || playerHand[i] === "QUEEN" || playerHand[i] === "JACK") {
             playerTotal += 10
@@ -186,8 +185,6 @@ const playerThirdCardTotal = () => {
         } else {playerTotal += parseInt(playerHand[i])}
     }
     playerTotal = playerTotal % 10
-    
-
 }
 
 const bankerThirdCardTotal = () => {
@@ -200,8 +197,6 @@ const bankerThirdCardTotal = () => {
      } else {bankerTotal += parseInt(bankerHand[i])}
     }
     bankerTotal = bankerTotal % 10;
-  
-    
 }  
 
 
@@ -375,8 +370,11 @@ const dealHand = () => {
 rulesBtn.addEventListener("click", () => {
     window.open('rules.html', '_blank')
 })
+
 shuffleBtn.addEventListener("click", newShoe)
+
 dealHandBtn.addEventListener("click", dealHand)
+
 buyInBtn.addEventListener("click", buyIn)
 
 
