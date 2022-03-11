@@ -63,3 +63,35 @@ input {
     margin: 0 25px;
     
 }
+
+@media screen and (max-width: 800px) {
+    .card {
+        width: 75px;
+        height: 104px;
+        margin: 0 1px;
+    }
+    .third-card {
+        margin: 0 18px;
+    }
+    h2 {
+        font-size: medium;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #card-area {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card {
+        width: 53px;
+        height: 73px;
+        margin: 0 2px;
+    }
+    .third-card {
+        margin: 0 12px;
+    }
+    h2 {
+        font-size: medium;
+    }
+}

@@ -20,37 +20,37 @@ let bankerCard3 = document.querySelector("#banker-card-3")
 
 
 /// Game Flow
-let playerTotalCards = 0;
+let playerTotalCards = 0
 let bankerTotalCards = 0;
-let playerHand = [];
-let bankerHand = [];
-let playerTotal = 0;
-let bankerTotal = 0;
-let playerWins = false;
-let bankerWins = false;
-let tieWins = false;
-let naturalWin = false;
-let playerNatural = false;
-let bankerNatural = false;
-let bothNatural = true;
+let playerHand = []
+let bankerHand = []
+let playerTotal = 0
+let bankerTotal = 0
+let playerWins = false
+let bankerWins = false
+let tieWins = false
+let naturalWin = false
+let playerNatural = false
+let bankerNatural = false
+let bothNatural = true
 
 /// Betting Area
-let tieBetInput = document.querySelector(".tie-bet");
-let playerBetInput = document.querySelector(".player-bet");
-let bankerBetInput = document.querySelector(".banker-bet");
-let totalChipDisplay = document.querySelector("#chip-total");
+let tieBetInput = document.querySelector(".tie-bet")
+let playerBetInput = document.querySelector(".player-bet")
+let bankerBetInput = document.querySelector(".banker-bet")
+let totalChipDisplay = document.querySelector("#chip-total")
 
-let totalChip = 1000;
-let tieBet = 0;
-let playerBet = 0;
-let bankerBet = 0;
-let totalBet = 0;
+let totalChip = 1000
+let tieBet = 0
+let playerBet = 0
+let bankerBet = 0
+let totalBet = 0
 
 /// Buttons
-let rulesBtn =document.querySelector("#rules");
-let shuffleBtn = document.querySelector("#shuffle-cards");
-let dealHandBtn = document.querySelector("#deal-hand");
-let buyInBtn = document.querySelector("#buy-in");
+let rulesBtn =document.querySelector("#rules")
+let shuffleBtn = document.querySelector("#shuffle-cards")
+let dealHandBtn = document.querySelector("#deal-hand")
+let buyInBtn = document.querySelector("#buy-in")
 
 const newShoe = async () => {
     playerCard1.style.background = ""
