@@ -64,3 +64,5 @@ Will be using deck of cards api for the card images, virtual deck and drawing of
 ##### Trello: (https://trello.com)
 
 ##### GitHub: (https://github.com/public-apis/public-api)
+
+##### w3schools: (https://w3schools)

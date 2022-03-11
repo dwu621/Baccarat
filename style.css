@@ -83,7 +83,7 @@ input {
     }
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 600px) {
     #card-area {
         flex-direction: column;
         justify-content: center;
@@ -118,16 +118,6 @@ input {
         font-size: medium;
     }
 
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
     input {
         width: 50px;
     }
