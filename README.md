@@ -8,7 +8,6 @@
 
 ### ***Description***
 
-
 Single player baccarat game
 
 #### A brief description of the project...
@@ -25,26 +24,32 @@ Will be using deck of cards api for the card images, virtual deck and drawing of
 
 ### ***Getting Started***
 * Set up basic table with divs and buttons
-* set up variables to keep track of components of the game
+* Set up variables to keep track of components of the game
 * Plan out game flow.
 * Write functions for each game flow
-* If time permits add Dragon/Bonus bonus
+* If time permits add Dragon/Bonus
 
-#### Sign up and log in as a new user...
+
 #### Development Progress can be viewed [here](https://trello.com/b/2TYwLeAV/baccarat#)
-#### Final Project can be viewed [here](insert-link-here)
+#### Final Project can be viewed [here](https://astonishing-jam.surge.sh)
 ***
 
-<!-- ### ***ScreenShots***
+### ***ScreenShots*** 
 
-##### image header 1
-![Grizz](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.QtSdytu1CB7Bv8hEWCRP9QAAAA%26pid%3DApi&f=1)
+##### iPhone View
+![iPhone View](screenshots/iPhone%2012%20Pro.png)
 
-##### image header 2
-![PanPan](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.N4zWsaGP2MF1e65EX9QHgQAAAA%26pid%3DApi&f=1)
+##### iPad View
+![iPad View](screenshots/iPad%20Air.png)
 
-##### image header 3
-![IceBear](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.DkyqtKrdx3hEHIO0LQdK4gAAAA%26pid%3DApi&f=1)
+##### Laptop View
+![Laptop View ](screenshots/Laptop.png)
+
+##### Desktop View
+![Desktop View](screenshots/Desktop.png)
+
+##### Rules
+![Rules](screenshots/Rules.png)
 *** -->
 
 ### ***Future Updates***
@@ -65,4 +70,4 @@ Will be using deck of cards api for the card images, virtual deck and drawing of
 
 ##### GitHub: (https://github.com/public-apis/public-api)
 
-##### w3schools: (https://w3schools)
+##### w3schools: (https://w3schools.com)

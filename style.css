@@ -88,12 +88,15 @@ input {
         flex-direction: column;
         justify-content: center;
     }
+   
     #banker-card-row {
         justify-content: center;
     }
+   
     #player-card-row {
         justify-content: center;
     }
+   
     table {
         margin: 5px auto;
     }
