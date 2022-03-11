@@ -7,13 +7,12 @@
 ***
 
 ### ***Description***
-
-Single player baccarat game
+Baccarat is a compare game where the "Banker" and the "Player" are dealt two cards each. The total value of the cards are used to determine if either will draw a third card. If no card is drawn, then the hand with the high value will win. If the conditions are met for a third card is drawn, then the comparison will be done after third card is drawn. If both values are the same, then the outcome is a tie. The total is calculated by adding the value of the cards, where "Ace" through "9" is worth their numeric value and "10", "Jack", "Queen", "King" are worth 10, and then only using the last digit as the total value of the hand. The game is played by betting on the outcome of each hand. "Player" bets are paid 1 to 1. "Banker" bets have to pay a 5% commission. "Tie" bets are padi 8 to 1.
 
 #### A brief description of the project...
+This project is based on the card game played at casinos with the same name. I will be using Axios and deck of cards api to make a virtual shoe consisting of 8 decks of cards. Images of cards and the drawing of cards will also be done. The game table will be pretty basic consisting of divs. I will be using mostly if/else statements for game logic and DOM manipulation to change card images and display messages.
 
 
-Will be using deck of cards api for the card images, virtual deck and drawing of cards
 
 ### ***Technologies Used***
 * HTML
@@ -50,10 +49,10 @@ Will be using deck of cards api for the card images, virtual deck and drawing of
 
 ##### Rules
 ![Rules](screenshots/Rules.png)
-*** -->
+*** 
 
 ### ***Future Updates***
-
+~~- [X] Add Responsiveness~~
 - [ ] Add Bonus Feature like Dragon/Panda
 
 ***

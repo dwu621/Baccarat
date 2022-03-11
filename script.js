@@ -143,7 +143,6 @@ const handTotal = () => {
         } else if (bankerHand[i] === "ACE") {
             bankerTotal++
         } else {bankerTotal += parseInt(bankerHand[i])}
-        console.log(bankerTotal)
     }
     bankerTotal = bankerTotal % 10; 
     
@@ -257,7 +256,7 @@ const bankerDrawThirdCard = () => {
             } else checkWinner()
         } else if (bankerTotal === 4) {
             if (playerHand[2] === "2" || playerHand[2] === "3" || playerHand[2] === "4" || playerHand[2] === "5" || playerHand[2] === "6" || playerHand[2] === "7") {
-                bankerDrawThird()
+            bankerDrawThird()
             } else checkWinner()
         } else if (bankerTotal === 5) {
             if (playerHand[2] === "4" || playerHand[2] === "5" || playerHand[2] === "6" || playerHand[2] === "7") {
