@@ -32,7 +32,7 @@ let tieWins = false
 let naturalWin = false
 let playerNatural = false
 let bankerNatural = false
-let bothNatural = true
+let bothNatural = false
 
 /// Betting Area
 let tieBetInput = document.querySelector(".tie-bet")

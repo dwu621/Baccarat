@@ -13,7 +13,6 @@ Baccarat is a compare game where the "Banker" and the "Player" are dealt two car
 This project is based on the card game played at casinos with the same name. I will be using Axios and deck of cards api to make a virtual shoe consisting of 8 decks of cards. Images of cards and the drawing of cards will also be done. The game table will be pretty basic consisting of divs. I will be using mostly if/else statements for game logic and DOM manipulation to change card images and display messages.
 
 
-
 ### ***Technologies Used***
 * HTML
 * CSS
