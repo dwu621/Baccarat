@@ -83,15 +83,26 @@ input {
         flex-direction: column;
         justify-content: center;
     }
+
     .card {
         width: 53px;
         height: 73px;
         margin: 0 2px;
     }
+
     .third-card {
         margin: 0 12px;
-    }
+    }   
+
     h2 {
         font-size: medium;
+    }
+
+    #banker-card-row {
+        justify-content: center;
+    }
+
+    #player-card-row {
+        justify-content: center;
     }
 }
