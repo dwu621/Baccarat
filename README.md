@@ -29,7 +29,7 @@ This project is based on the card game played at casinos with the same name. I w
 
 
 #### Development Progress can be viewed [here](https://trello.com/b/2TYwLeAV/baccarat#)
-#### Final Project can be viewed [here](https://astonishing-jam.surge.sh)
+#### Final Project can be viewed [here](Baccarat-David-Wu.surge.sh)
 ***
 
 ### ***ScreenShots*** 
